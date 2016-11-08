@@ -16,9 +16,12 @@ ApplicationWindow {
 
     visible: true
     width: 640
-    height: 240
     minimumWidth: 640
+    maximumWidth: 640
+
+    height: 240
     minimumHeight: 240
+    maximumHeight: 240
 
     function startLoading() {
         loading.visible = true;
