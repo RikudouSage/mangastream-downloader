@@ -1,10 +1,13 @@
 import QtQuick 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Window 2.0
+import QtQuick.Dialogs 1.2
 import cz.chrastecky.img 1.0
 import cz.chrastecky.mangastream 1.0
 
 ApplicationWindow {
+    readonly property string infoText: qsTr("Your manga was successfully saved to %1")
+
     property int marginSize: 30
     property var urls
 
@@ -86,6 +89,15 @@ ApplicationWindow {
 
     ImageDownloader {
         id: downloader
+        onDownloadComplete: {
+            info.text = infoText.arg(downloader.path);
+            info.open();
+        }
+    }
+
+    MessageDialog {
+        id: info
+        title: qsTr("Download info")
     }
 
     MangaStream {
@@ -122,6 +134,7 @@ ApplicationWindow {
             for(var i in urls) {
                 downloader.download(urls[i], mangaTitle, chapter, urls.length);
             }
+            downloader.downloadComplete();
             downloader.reset();
             stopLoading();
         }

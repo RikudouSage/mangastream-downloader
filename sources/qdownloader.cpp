@@ -2,6 +2,7 @@
 #include <QDebug>
 
 bool DownloadImage::download(const QString url, const QString manga, const QString chapter, int totalCount) {
+
     if(totalCount > 0) {
         qDebug() << "Image "+QString::number(i)+" of "+QString::number(totalCount);
     }
@@ -14,6 +15,8 @@ bool DownloadImage::download(const QString url, const QString manga, const QStri
     QString extension = url.right(3);
 
     QString filename = mangaDir.absolutePath()+"/"+QString::number(i++)+"."+extension;
+
+    path = mangaDir.absolutePath();
 
     //qDebug() << filename;
 
@@ -40,4 +43,8 @@ bool DownloadImage::download(const QString url, const QString manga, const QStri
 
 void DownloadImage::reset() {
     i = 1;
+}
+
+QString DownloadImage::getPath() {
+    return path;
 }
