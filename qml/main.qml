@@ -5,6 +5,8 @@ import QtQuick.Dialogs 1.2
 import cz.chrastecky.img 1.0
 import cz.chrastecky.mangastream 1.0
 
+import "qrc:/qml/components"
+
 ApplicationWindow {
     readonly property string infoText: qsTr("Your manga was successfully saved to %1")
     readonly property string imagesCountText: qsTr("Image %1 of %2")
@@ -143,12 +145,15 @@ ApplicationWindow {
         }
     }
 
-    Button {
+    NewButton {
         id: downloadButton
         visible: false
+        paddingLeftRight: 30
         text: qsTr("Download")
         x: marginSize
         y: selectChapters.y + selectChapters.height + marginSize
+        font.pixelSize: 17
+        anchors.horizontalCenter: parent.horizontalCenter
         onClicked: {
             progress(0, urls.length);
             startLoading();
