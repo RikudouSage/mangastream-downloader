@@ -7,6 +7,7 @@ import cz.chrastecky.mangastream 1.0
 
 ApplicationWindow {
     readonly property string infoText: qsTr("Your manga was successfully saved to %1")
+    readonly property string imagesCountText: qsTr("Image %1 of %2")
 
     property int marginSize: 30
     property var urls
@@ -31,6 +32,15 @@ ApplicationWindow {
         loading.visible = false;
     }
 
+    function progress(index, total) {
+        if(index === false) {
+            imagescount.text = "";
+            return;
+        }
+
+        imagescount.text = imagesCountText.arg(index).arg(total);
+    }
+
     title: qsTr("MangaStream downloader")
     Label {
         id: chooselabel
@@ -48,7 +58,14 @@ ApplicationWindow {
         z: 5000
         Label {
             text: qsTr("Loading...")
-            anchors.centerIn: parent
+            x: parent.width / 2 - width / 2
+            y: parent.height / 2 - height / 2 - marginSize / 2
+            font.pixelSize: 20
+        }
+        Label {
+            id: imagescount
+            x: parent.width / 2 - width / 2
+            y: parent.height / 2 - height / 2 + marginSize / 2
         }
     }
 
@@ -133,13 +150,16 @@ ApplicationWindow {
         x: marginSize
         y: selectChapters.y + selectChapters.height + marginSize
         onClicked: {
+            progress(0, urls.length);
             startLoading();
             for(var i in urls) {
+                progress(i, urls.length);
                 downloader.download(urls[i], mangaTitle, chapter, urls.length);
             }
             downloader.downloadComplete();
             downloader.reset();
             stopLoading();
+            progress(false);
         }
     }
 
@@ -152,6 +172,7 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
+        //startLoading();
         var mangaList = mangastream.getListOfManga();
         lmodel.append({text: "---", value: "---"});
 
