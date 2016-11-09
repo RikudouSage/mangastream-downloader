@@ -14,20 +14,20 @@ Windows users can download compiled version [here](https://github.com/RikudouSag
 
 1) First install all dependencies:
 
-   `apt-get update && apt-get install git build-essential qtbase5-dev qtdeclarative5-dev qt5-default qttools5-dev-tools`
+	apt-get update && apt-get install git build-essential qtbase5-dev qtdeclarative5-dev qt5-default qttools5-dev-tools
 
 2) Clone project
 
-   `git clone https://github.com/RikudouSage/mangastream-downloader`
+	git clone https://github.com/RikudouSage/mangastream-downloader
    
 3) Get into the directory
 
-    `cd mangastream-downloader`
+	cd mangastream-downloader
     
 4) Compile it
 
-    `qmake && make`
+	qmake && make
     
 5) Run it!
 
-    `./mangastream-downloader`
+	./mangastream-downloader
