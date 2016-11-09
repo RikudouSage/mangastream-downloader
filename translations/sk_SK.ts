@@ -26,7 +26,7 @@
     <message>
         <location filename="../qml/main.qml" line="45"/>
         <source>C&amp;lear manga cache</source>
-        <translation>&amp;Načitať aktuálne mangy</translation>
+        <translation>&amp;Načitať aktuálny zoznam</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="69"/>
