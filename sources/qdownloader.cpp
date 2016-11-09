@@ -1,13 +1,14 @@
 #include "headers/qdownloader.h"
 #include <QDebug>
 
-bool DownloadImage::download(const QString url, const QString manga, const QString chapter, int totalCount) {
+bool DownloadImage::download(const QString url, const QString manga, const QString chapter, const QString savePath, int totalCount) {
 
     if(totalCount > 0) {
         qDebug() << "Image "+QString::number(i)+" of "+QString::number(totalCount);
     }
-    QString currentPath = QDir::currentPath();
-    QDir mangaDir(currentPath+"/manga/"+manga+"/"+chapter);
+    QString currentPath = savePath;
+    qDebug() << currentPath;
+    QDir mangaDir(currentPath+"/"+manga+"/"+chapter);
     if(!mangaDir.exists()) {
         mangaDir.mkpath(".");
     }

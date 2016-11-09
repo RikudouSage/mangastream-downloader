@@ -17,7 +17,7 @@ class DownloadImage : public QObject {
     Q_OBJECT
     Q_PROPERTY(QString path READ getPath)
 public:
-    Q_INVOKABLE bool download(const QString url, const QString manga, const QString chapter, int totalCount = 0);
+    Q_INVOKABLE bool download(const QString url, const QString manga, const QString chapter, const QString savePath, int totalCount = 0);
     Q_INVOKABLE void reset();
     QString getPath();
 signals:

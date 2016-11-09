@@ -2,6 +2,8 @@ import QtQuick 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Window 2.0
 import QtQuick.Dialogs 1.2
+import QtQuick.LocalStorage 2.0
+
 import cz.chrastecky.img 1.0
 import cz.chrastecky.mangastream 1.0
 import cz.chrastecky.misc 1.0
@@ -13,10 +15,13 @@ ApplicationWindow {
     readonly property string imagesCountText: qsTr("Image %1 of %2")
 
     property int marginSize: 30
+
     property var urls
+    property var db
 
     property string mangaTitle
     property string chapter
+    property string appPath: misctools.appPath+"/manga"
 
     visible: true
     width: 640
@@ -26,6 +31,34 @@ ApplicationWindow {
     height: 240
     minimumHeight: 240
     maximumHeight: 240
+
+    menuBar: MenuBar {
+        Menu {
+            title: qsTr("File")
+            MenuItem {
+                text: qsTr("&Choose manga directory")
+                onTriggered: {
+                    filedialog.open();
+                }
+            }
+        }
+    }
+
+    FileDialog {
+        id: filedialog
+        title: qsTr("Choose manga directory")
+        folder: shortcuts.documents
+        selectFolder: true
+        selectMultiple: false
+        selectExisting: true
+        onAccepted: {
+            var url = fileUrl.toString().replace("file://","");
+            appPath = url;
+            db.transaction(function(tx) {
+                tx.executeSql("UPDATE path SET path='"+url+"'");
+            });
+        }
+    }
 
     function startLoading() {
         loading.visible = true;
@@ -171,7 +204,7 @@ ApplicationWindow {
             startLoading();
             for(var i in urls) {
                 progress(i, urls.length);
-                downloader.download(urls[i], mangaTitle, chapter, urls.length);
+                downloader.download(urls[i], mangaTitle, chapter, appPath, urls.length);
             }
             downloader.downloadComplete();
             downloader.reset();
@@ -189,7 +222,22 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
-        //startLoading();
+        startLoading();
+        db = LocalStorage.openDatabaseSync("MainDB","1.0","MainDB",1000000);
+        db.transaction(function(tx){
+            tx.executeSql("CREATE TABLE IF NOT EXISTS version (version)");
+            tx.executeSql("CREATE TABLE IF NOT EXISTS path (path)")
+            var res = tx.executeSql("SELECT * FROM version");
+            if(!res.rows.length) {
+                tx.executeSql("INSERT INTO version (version) VALUES (1)");
+            }
+            res = tx.executeSql("SELECT * FROM path");
+            if(!res.rows.length) {
+                tx.executeSql("INSERT INTO path (path) VALUES (?)",[appPath]);
+            } else {
+                appPath = res.rows.item(0).path;
+            }
+        });
         var mangaList = mangastream.getListOfManga();
         lmodel.append({text: "---", value: "---"});
 

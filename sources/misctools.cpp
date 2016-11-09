@@ -11,3 +11,7 @@ bool MiscTools::openDirectory(QString directory) {
     directory = PREFIX+directory;
     return QDesktopServices::openUrl(QUrl(directory));
 }
+
+QString MiscTools::getAppPath() {
+    return QDir::currentPath();
+}

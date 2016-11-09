@@ -4,42 +4,57 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/main.qml" line="12"/>
+        <location filename="../qml/main.qml" line="14"/>
         <source>Your manga was successfully saved to %1</source>
         <translation>Vaše manga byla úspěšně uložena do složky %1</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="13"/>
+        <location filename="../qml/main.qml" line="15"/>
         <source>Image %1 of %2</source>
         <translation>Obrázek %1 z %2</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="47"/>
+        <location filename="../qml/main.qml" line="37"/>
+        <source>File</source>
+        <translation>Soubor</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="39"/>
+        <source>&amp;Choose manga directory</source>
+        <translation>&amp;Zvolte složku pro ukládání</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="49"/>
+        <source>Choose manga directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="80"/>
         <source>MangaStream downloader</source>
         <translation>MangaStream downloader</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="50"/>
+        <location filename="../qml/main.qml" line="83"/>
         <source>Choose manga to download:</source>
         <translation>Zvolte mangu ke stažení</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="63"/>
+        <location filename="../qml/main.qml" line="96"/>
         <source>Loading...</source>
         <translation>Načítání...</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="106"/>
+        <location filename="../qml/main.qml" line="139"/>
         <source>Choose chapter: </source>
         <translation>Zvolte kapitolu: </translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="123"/>
+        <location filename="../qml/main.qml" line="156"/>
         <source>Download info</source>
         <translation>Info o stažení</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="164"/>
+        <location filename="../qml/main.qml" line="197"/>
         <source>Download</source>
         <translation>Stáhnout</translation>
     </message>
