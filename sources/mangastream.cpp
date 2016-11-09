@@ -1,5 +1,4 @@
 #include "headers/mangastream.h"
-#include <QDebug>
 
 QString MangaStream::getContentOfUrl(QString url) {
     QUrl dUrl(url);

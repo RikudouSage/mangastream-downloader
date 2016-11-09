@@ -1,9 +1,16 @@
 #include "headers/misctools.h"
-#include <QDebug>
 
 bool MiscTools::openDirectory(QString directory) {
     directory = getFilePrefix()+directory;
     return QDesktopServices::openUrl(QUrl(directory));
+}
+
+bool MiscTools::isWindows() {
+#if defined(Q_OS_WIN)
+    return true;
+#else
+    return false;
+#endif
 }
 
 QString MiscTools::getAppPath() {
@@ -11,9 +18,12 @@ QString MiscTools::getAppPath() {
 }
 
 QString MiscTools::getFilePrefix() {
-#if defined(Q_OS_WIN)
-    return QString("file:///");
-#else
+    if(isWindows()) {
+        return QString("file:///");
+    }
     return QString("file://");
-#endif
+}
+
+bool MiscTools::isDebug() {
+    return IS_DEBUG;
 }

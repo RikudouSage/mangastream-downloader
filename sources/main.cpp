@@ -2,6 +2,12 @@
 #include <QtQml>
 #include <QQmlApplicationEngine>
 #include <QTranslator>
+
+#ifdef DEBUG
+#include <QDebug>
+#endif
+
+#include "headers/isdebug.h"
 #include "headers/qdownloader.h"
 #include "headers/mangastream.h"
 #include "headers/misctools.h"

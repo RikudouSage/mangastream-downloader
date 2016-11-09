@@ -29,32 +29,32 @@
         <translation>Zvolte složku pro ukládání</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="80"/>
+        <location filename="../qml/main.qml" line="86"/>
         <source>MangaStream downloader</source>
         <translation>MangaStream downloader</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="83"/>
+        <location filename="../qml/main.qml" line="89"/>
         <source>Choose manga to download:</source>
         <translation>Zvolte mangu ke stažení</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="96"/>
+        <location filename="../qml/main.qml" line="102"/>
         <source>Loading...</source>
         <translation>Načítání...</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="139"/>
+        <location filename="../qml/main.qml" line="145"/>
         <source>Choose chapter: </source>
         <translation>Zvolte kapitolu: </translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="156"/>
+        <location filename="../qml/main.qml" line="162"/>
         <source>Download info</source>
         <translation>Info o stažení</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="197"/>
+        <location filename="../qml/main.qml" line="203"/>
         <source>Download</source>
         <translation>Stáhnout</translation>
     </message>

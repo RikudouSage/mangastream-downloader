@@ -60,6 +60,12 @@ ApplicationWindow {
         }
     }
 
+    function debug(what) {
+        if(misctools.isDebug()) {
+            console.log(what);
+        }
+    }
+
     function startLoading() {
         loading.visible = true;
     }
@@ -222,6 +228,7 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
+        debug("Loaded");
         startLoading();
         db = LocalStorage.openDatabaseSync("MainDB","1.0","MainDB",1000000);
         db.transaction(function(tx){
