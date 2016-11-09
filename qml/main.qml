@@ -13,6 +13,7 @@ import "qrc:/qml/components"
 ApplicationWindow {
     readonly property string infoText: qsTr("Your manga was successfully saved to %1")
     readonly property string imagesCountText: qsTr("Image %1 of %2")
+    readonly property string chaptersCountText: qsTr("Chapter %1 of %2")
 
     property int marginSize: 30
 
@@ -28,9 +29,9 @@ ApplicationWindow {
     minimumWidth: 640
     maximumWidth: 640
 
-    height: 240
-    minimumHeight: 240
-    maximumHeight: 240
+    height: 260
+    minimumHeight: 260
+    maximumHeight: 260
 
     menuBar: MenuBar {
         Menu {
@@ -103,6 +104,14 @@ ApplicationWindow {
         imagescount.text = imagesCountText.arg(index).arg(total);
     }
 
+    function chapterProgress(index, total) {
+        if(index === false) {
+            chapterscount.text = "";
+            return;
+        }
+        chapterscount.text = chaptersCountText.arg(index).arg(total);
+    }
+
     function assignMangaList(clearCache) {
         lmodel.clear();
         lmodel.append({text: "---", value: "---"});
@@ -160,11 +169,16 @@ ApplicationWindow {
         Label {
             text: qsTr("Loading...")
             x: parent.width / 2 - width / 2
-            y: parent.height / 2 - height / 2 - marginSize / 2
+            y: parent.height / 2 - height / 2 - marginSize / 1.5
             font.pixelSize: 20
         }
         Label {
             id: imagescount
+            x: parent.width / 2 - width / 2
+            y: parent.height / 2 - height / 2
+        }
+        Label {
+            id: chapterscount
             x: parent.width / 2 - width / 2
             y: parent.height / 2 - height / 2 + marginSize / 2
         }
@@ -212,18 +226,20 @@ ApplicationWindow {
         id: downloader
         onDownloadComplete: {
             info.text = infoText.arg(downloader.path);
+            info.directory = downloader.path;
             info.open();
         }
     }
 
     MessageDialog {
+        property string directory: downloader.path
         id: info
         title: qsTr("Download info")
         icon: StandardIcon.Information
         standardButtons: StandardButton.Ok | StandardButton.Open
         onAccepted: {
             if(clickedButton == StandardButton.Open) {
-                misctools.openDirectory(downloader.path);
+                misctools.openDirectory(directory);
             }
         }
     }
@@ -244,6 +260,7 @@ ApplicationWindow {
         y: chapterlabel.y + 5
         visible: false
         onCurrentIndexChanged: {
+            debug(currentIndex);
             if(typeof lmodelChapters.get(currentIndex).link != "undefined" && lmodelChapters.get(currentIndex).text != "undefined") {
                 startLoading();
                 chapter = lmodelChapters.get(currentIndex).text;
@@ -260,7 +277,6 @@ ApplicationWindow {
         visible: false
         paddingLeftRight: 30
         text: qsTr("Download")
-        x: marginSize
         y: selectChapters.y + selectChapters.height + marginSize
         font.pixelSize: 17
         anchors.horizontalCenter: parent.horizontalCenter
@@ -275,6 +291,40 @@ ApplicationWindow {
             downloader.reset();
             stopLoading();
             progress(false);
+        }
+    }
+
+    NewButton {
+        id: downloadAllButton
+        visible: downloadButton.visible
+        paddingLeftRight: 30
+        text: qsTr("Download all chapters")
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: downloadButton.y + downloadButton.height + 10
+        font.pixelSize: 17
+        onClicked: {
+            startLoading();
+            var len = lmodelChapters.count;
+            chapterProgress(0, len);
+            for(var i = 0; i < len; i++) {
+                progress(0,0);
+                var j = i + 1;
+                chapterProgress(j, len);
+                var images = mangastream.getImages(lmodelChapters.get(i).link);
+                var lenImages = images.length;
+                for(var k in images) {
+                    progress(parseInt(k) + 1, lenImages);
+                    var title = lmodelChapters.get(i).text;
+                    downloader.download(images[k], mangaTitle, title, appPath, lenImages);
+                }
+                downloader.reset();
+            }
+            stopLoading();
+            progress(false);
+            chapterProgress(false);
+            info.text = infoText.arg(appPath+"/"+mangaTitle);
+            info.directory = appPath+"/"+mangaTitle;
+            info.open();
         }
     }
 
