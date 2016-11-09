@@ -16,6 +16,7 @@ RESOURCES += qml.qrc \
     translations.qrc
 
 TRANSLATIONS += translations/cs_CZ.ts
+TRANSLATIONS += translations/sk_SK.ts
 
 QML_IMPORT_PATH =
 
