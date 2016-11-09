@@ -41,6 +41,26 @@ ApplicationWindow {
                     filedialog.open();
                 }
             }
+            MenuItem {
+                text: qsTr("C&lear manga cache")
+                onTriggered: {
+                    assignMangaList(true);
+                }
+            }
+        }
+
+        Menu {
+            title: "Debug"
+            visible: misctools.isDebug()
+            MenuItem {
+                text: "&Delete almost every manga"
+                onTriggered: {
+                    db.transaction(function(tx) {
+                        tx.executeSql("DELETE FROM mangalist WHERE manga != 'Boruto'");
+                        assignMangaList();
+                    });
+                }
+            }
         }
     }
 
@@ -81,6 +101,45 @@ ApplicationWindow {
         }
 
         imagescount.text = imagesCountText.arg(index).arg(total);
+    }
+
+    function assignMangaList(clearCache) {
+        lmodel.clear();
+        lmodel.append({text: "---", value: "---"});
+
+        if(!clearCache) {
+            clearCache = false;
+        }
+
+        startLoading();
+
+        db.transaction(function(tx) {
+            if(clearCache) {
+                tx.executeSql("DELETE FROM mangalist");
+            }
+
+            var res = tx.executeSql("SELECT * FROM mangalist");
+            if(!res.rows.length) {
+                var mangaList = mangastream.getListOfManga();
+                var url;
+                var name;
+                for(var i in mangaList) {
+                    if(i % 2 == 0) {
+                        url = mangaList[i];
+                    } else {
+                        name = mangaList[i];
+                        lmodel.append({text: name, value: url});
+                        tx.executeSql("INSERT INTO mangalist (url, manga) VALUES (?,?)", [url, name]);
+                    }
+                }
+                stopLoading();
+            } else {
+                for(var i = 0; i < res.rows.length; i++) {
+                    lmodel.append({text: res.rows.item(i).manga, value: res.rows.item(i).url});
+                }
+                stopLoading();
+            }
+        });
     }
 
     title: qsTr("MangaStream downloader")
@@ -228,12 +287,12 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
-        debug("Loaded");
         startLoading();
         db = LocalStorage.openDatabaseSync("MainDB","1.0","MainDB",1000000);
         db.transaction(function(tx){
             tx.executeSql("CREATE TABLE IF NOT EXISTS version (version)");
             tx.executeSql("CREATE TABLE IF NOT EXISTS path (path)")
+            tx.executeSql("CREATE TABLE IF NOT EXISTS mangalist (url, manga)")
             var res = tx.executeSql("SELECT * FROM version");
             if(!res.rows.length) {
                 tx.executeSql("INSERT INTO version (version) VALUES (1)");
@@ -244,20 +303,9 @@ ApplicationWindow {
             } else {
                 appPath = res.rows.item(0).path;
             }
-        });
-        var mangaList = mangastream.getListOfManga();
-        lmodel.append({text: "---", value: "---"});
 
-        var url;
-        var name;
-        for(var i in mangaList) {
-            if(i % 2 == 0) {
-                url = mangaList[i];
-            } else {
-                name = mangaList[i];
-                lmodel.append({text: name, value: url});
-            }
-        }
-        stopLoading();
+            assignMangaList();
+
+        });
     }
 }

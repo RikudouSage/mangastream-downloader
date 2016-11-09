@@ -24,37 +24,42 @@
         <translation>Vyberte priečinok na uloženie</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="49"/>
+        <location filename="../qml/main.qml" line="45"/>
+        <source>C&amp;lear manga cache</source>
+        <translation>&amp;Načitať aktuálne mangy</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="69"/>
         <source>Choose manga directory</source>
         <translation>Vyberte priečinok na uloženie</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="86"/>
+        <location filename="../qml/main.qml" line="145"/>
         <source>MangaStream downloader</source>
         <translation>MangaStream downloader</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="89"/>
+        <location filename="../qml/main.qml" line="148"/>
         <source>Choose manga to download:</source>
         <translation>Zvoľte mangu na stiahnutie</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="102"/>
+        <location filename="../qml/main.qml" line="161"/>
         <source>Loading...</source>
         <translation>Načítanie...</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="145"/>
+        <location filename="../qml/main.qml" line="204"/>
         <source>Choose chapter: </source>
         <translation>Zvoľte kapitolu: </translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="162"/>
+        <location filename="../qml/main.qml" line="221"/>
         <source>Download info</source>
         <translation>Info o stiahnutí</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="203"/>
+        <location filename="../qml/main.qml" line="262"/>
         <source>Download</source>
         <translation>Stiahnuť</translation>
     </message>
