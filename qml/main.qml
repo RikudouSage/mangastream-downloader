@@ -4,6 +4,7 @@ import QtQuick.Window 2.0
 import QtQuick.Dialogs 1.2
 import cz.chrastecky.img 1.0
 import cz.chrastecky.mangastream 1.0
+import cz.chrastecky.misc 1.0
 
 import "qrc:/qml/components"
 
@@ -120,10 +121,21 @@ ApplicationWindow {
     MessageDialog {
         id: info
         title: qsTr("Download info")
+        icon: StandardIcon.Information
+        standardButtons: StandardButton.Ok | StandardButton.Open
+        onAccepted: {
+            if(clickedButton == StandardButton.Open) {
+                misctools.openDirectory(downloader.path);
+            }
+        }
     }
 
     MangaStream {
         id: mangastream
+    }
+
+    MiscTools {
+        id: misctools
     }
 
     ComboBox {

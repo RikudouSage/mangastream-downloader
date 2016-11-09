@@ -9,7 +9,8 @@ CONFIG += c++11
 
 SOURCES += sources/main.cpp \
     sources/qdownloader.cpp \
-    sources/mangastream.cpp
+    sources/mangastream.cpp \
+    sources/misctools.cpp
 
 RESOURCES += qml.qrc \
     translations.qrc
@@ -22,7 +23,8 @@ include(deployment.pri)
 
 HEADERS += \
     headers/qdownloader.h \
-    headers/mangastream.h
+    headers/mangastream.h \
+    headers/misctools.h
 
 lupdate_only {
     SOURCES += qml/*.qml
