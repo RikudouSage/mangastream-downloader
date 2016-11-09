@@ -10,10 +10,24 @@ Windows users can download compiled version [here](https://github.com/RikudouSag
 
 ---
 
-###Compiling
+###Compiling on Ubuntu/Debian/Mint
 
-1. `qmake`
-2. `make`
-3. `./mangastream-downloader`
+1) First install all dependencies:
 
-You will need Qt framework to compile.
+   `apt-get update && apt-get install git build-essential qtbase5-dev qtdeclarative5-dev qt5-default qttools5-dev-tools`
+
+2) Clone project
+
+   `git clone https://github.com/RikudouSage/mangastream-downloader`
+   
+3) Get into the directory
+
+    `cd mangastream-downloader`
+    
+4) Compile it
+
+    `qmake && make`
+    
+5) Run it!
+
+    `./mangastream-downloader`
