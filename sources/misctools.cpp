@@ -8,7 +8,6 @@
 #endif
 
 bool MiscTools::openDirectory(QString directory) {
-    qDebug() << PREFIX;
     directory = PREFIX+directory;
     return QDesktopServices::openUrl(QUrl(directory));
 }
