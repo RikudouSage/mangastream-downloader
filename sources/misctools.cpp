@@ -1,17 +1,19 @@
 #include "headers/misctools.h"
 #include <QDebug>
 
-#if defined(Q_OS_WIN)
-    #define PREFIX "file:///"
-#else
-    #define PREFIX "file://"
-#endif
-
 bool MiscTools::openDirectory(QString directory) {
-    directory = PREFIX+directory;
+    directory = getFilePrefix()+directory;
     return QDesktopServices::openUrl(QUrl(directory));
 }
 
 QString MiscTools::getAppPath() {
     return QDir::currentPath();
+}
+
+QString MiscTools::getFilePrefix() {
+#if defined(Q_OS_WIN)
+    return QString("file:///");
+#else
+    return QString("file://");
+#endif
 }

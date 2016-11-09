@@ -52,7 +52,7 @@ ApplicationWindow {
         selectMultiple: false
         selectExisting: true
         onAccepted: {
-            var url = fileUrl.toString().replace("file://","");
+            var url = fileUrl.toString().replace(misctools.filePrefix,"");
             appPath = url;
             db.transaction(function(tx) {
                 tx.executeSql("UPDATE path SET path='"+url+"'");
