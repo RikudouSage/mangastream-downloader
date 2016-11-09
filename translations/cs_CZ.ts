@@ -26,7 +26,7 @@
     <message>
         <location filename="../qml/main.qml" line="49"/>
         <source>Choose manga directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte složku pro ukládání</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="80"/>
