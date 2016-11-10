@@ -48,6 +48,12 @@ ApplicationWindow {
                     assignMangaList(true);
                 }
             }
+            MenuItem {
+                text: qsTr("&Open manga directory")
+                onTriggered: {
+                    misctools.openDirectory(appPath);
+                }
+            }
         }
 
         Menu {

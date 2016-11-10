@@ -34,52 +34,57 @@
         <translation>&amp;Načitať aktuálny zoznam</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="70"/>
+        <location filename="../qml/main.qml" line="52"/>
+        <source>&amp;Open manga directory</source>
+        <translation>&amp;Otvoriť zložku s mangou</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="76"/>
         <source>Choose manga directory</source>
         <translation>Vyberte priečinok na uloženie</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="154"/>
+        <location filename="../qml/main.qml" line="160"/>
         <source>MangaStream downloader</source>
         <translation>MangaStream downloader</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="157"/>
+        <location filename="../qml/main.qml" line="163"/>
         <source>Choose manga to download:</source>
         <translation>Zvoľte mangu na stiahnutie</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="170"/>
+        <location filename="../qml/main.qml" line="176"/>
         <source>Loading...</source>
         <translation>Načítanie...</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="218"/>
+        <location filename="../qml/main.qml" line="224"/>
         <source>Choose chapter: </source>
         <translation>Zvoľte kapitolu: </translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="234"/>
+        <location filename="../qml/main.qml" line="240"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="235"/>
+        <location filename="../qml/main.qml" line="241"/>
         <source>Error: Name of manga contains illegal characters and cannot be saved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="242"/>
+        <location filename="../qml/main.qml" line="248"/>
         <source>Download info</source>
         <translation>Info o stiahnutí</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="284"/>
+        <location filename="../qml/main.qml" line="290"/>
         <source>Download</source>
         <translation>Stiahnuť</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="306"/>
+        <location filename="../qml/main.qml" line="312"/>
         <source>Download all chapters</source>
         <translation>Stiahnuť všetky kapitoly</translation>
     </message>
