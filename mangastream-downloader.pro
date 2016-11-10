@@ -21,6 +21,8 @@ RESOURCES += qml.qrc \
 TRANSLATIONS += translations/cs_CZ.ts
 TRANSLATIONS += translations/sk_SK.ts
 
+RC_ICONS = appicon.ico
+
 QML_IMPORT_PATH =
 
 include(deployment.pri)
