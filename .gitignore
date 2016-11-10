@@ -39,3 +39,8 @@ CMakeLists.txt.user
 /*-release.zip
 /mangastream-downloader
 /*.rc
+*_import.cpp
+*.Debug
+*.Release
+/release
+/debug
