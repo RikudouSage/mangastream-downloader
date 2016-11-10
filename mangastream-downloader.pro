@@ -8,6 +8,7 @@ TEMPLATE = app
 QT += qml quick widgets
 
 CONFIG += c++11
+CONFIG += release
 
 SOURCES += sources/main.cpp \
     sources/qdownloader.cpp \
