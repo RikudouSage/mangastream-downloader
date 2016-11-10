@@ -23,9 +23,11 @@ public:
     QString getPath();
 signals:
     void downloadComplete();
+    void invalidCharacters();
 private:
     int i = 1;
     QString path;
+    QString validateFilename(QString filename);
 };
 
 #endif // QDOWNLOADER_H

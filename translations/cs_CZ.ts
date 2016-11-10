@@ -59,17 +59,27 @@
         <translation>Zvolte kapitolu: </translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="237"/>
+        <location filename="../qml/main.qml" line="234"/>
+        <source>Error</source>
+        <translation>Chyba</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="235"/>
+        <source>Error: Name of manga contains illegal characters and cannot be saved</source>
+        <translation>Chyba: Název mangy obsahuje neplatné znaky a nelze ji uložit</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="242"/>
         <source>Download info</source>
         <translation>Info o stažení</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="279"/>
+        <location filename="../qml/main.qml" line="284"/>
         <source>Download</source>
         <translation>Stáhnout</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="301"/>
+        <location filename="../qml/main.qml" line="306"/>
         <source>Download all chapters</source>
         <translation>Stáhnout všechny kapitoly</translation>
     </message>

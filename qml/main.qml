@@ -229,6 +229,11 @@ ApplicationWindow {
             info.directory = downloader.path;
             info.open();
         }
+        onInvalidCharacters: {
+            stopLoading();
+            info.title = qsTr("Error");
+            info.text = qsTr("Error: Name of manga contains illegal characters and cannot be saved");
+        }
     }
 
     MessageDialog {
