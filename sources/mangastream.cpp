@@ -103,7 +103,9 @@ QStringList MangaStream::getImages(QString url) {
 
         QRegularExpressionMatch matches = regexp.match(line);
 
-        ret << matches.captured(2);
+        if(matches.captured(2).length() > 0) {
+            ret << "http:"+matches.captured(2);
+        }
 
         currentUrl = matches.captured(1);
         if(currentUrl.split("/").length() > 5) {
