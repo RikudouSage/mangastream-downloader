@@ -1,4 +1,4 @@
-#MangaStream Downloader
+# MangaStream Downloader
 
 This is a simple app written in Qt, it allows you to download manga from MangaStream.
 
@@ -8,9 +8,11 @@ After downloading the manga will be in new directory "manga" created in the app 
 
 Windows users can download compiled version [here](https://github.com/RikudouSage/mangastream-downloader/releases).
 
+Ubuntu 17.04 (zesty) users can download compiled version [here](https://github.com/RikudouSage/mangastream-downloader/releases).
+
 ---
 
-###Compiling on Ubuntu/Debian/Mint
+### Compiling on Ubuntu/Debian/Mint
 
 1) First install all dependencies:
 
