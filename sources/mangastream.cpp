@@ -99,7 +99,7 @@ QStringList MangaStream::getImages(QString url) {
 
         QString line = answer.mid(startPos, length);
 
-        QRegularExpression regexp("<a href=\"(.+)\"><img id=\"manga-page\" src=\"(.+)\"/></a>");
+        QRegularExpression regexp("<a href=\"(.+)\"><img id=\"manga-page\" src=\"(.+)\" /></a>");
 
         QRegularExpressionMatch matches = regexp.match(line);
 
