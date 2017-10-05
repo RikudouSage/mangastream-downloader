@@ -8,7 +8,25 @@ After downloading the manga will be in new directory "manga" created in the app 
 
 Windows users can download compiled version [here](https://github.com/RikudouSage/mangastream-downloader/releases).
 
-Ubuntu 17.04 (zesty) users can download compiled version [here](https://github.com/RikudouSage/mangastream-downloader/releases).
+Ubuntu 17.04 (zesty) users can add repository to install via apt:
+
+Add the repository:
+
+`sudo echo "deb https://rikudousage.github.io/repo zesty main" > /etc/apt/sources.list.d/rikudousage-zesty.list`
+
+Add signing key:
+
+`wget -O - https://rikudousage.github.io/public.gpg.key | sudo apt-key add -`
+
+Update repositories:
+
+`apt update`
+
+And install:
+
+`apt install mangastream-downloader`
+
+Alternatively you can download deb package [here](https://github.com/RikudouSage/mangastream-downloader/releases).
 
 ---
 
