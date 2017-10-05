@@ -12,7 +12,7 @@ Ubuntu 17.04 (zesty) users can add repository to install via apt:
 
 Add the repository:
 
-`sudo echo "deb https://rikudousage.github.io/repo zesty main" > /etc/apt/sources.list.d/rikudousage-zesty.list`
+`sudo sh -c "echo 'deb https://rikudousage.github.io/repo zesty main' > /etc/apt/sources.list.d/rikudousage-zesty.list"`
 
 Add signing key:
 
@@ -20,11 +20,11 @@ Add signing key:
 
 Update repositories:
 
-`apt update`
+`sudo apt update`
 
 And install:
 
-`apt install mangastream-downloader`
+`sudo apt install mangastream-downloader`
 
 Alternatively you can download deb package [here](https://github.com/RikudouSage/mangastream-downloader/releases).
 
