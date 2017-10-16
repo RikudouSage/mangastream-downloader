@@ -33,3 +33,5 @@ HEADERS += \
 lupdate_only {
     SOURCES += qml/*.qml
 }
+
+DISTFILES +=

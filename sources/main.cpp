@@ -2,6 +2,7 @@
 #include <QtQml>
 #include <QQmlApplicationEngine>
 #include <QTranslator>
+#include <QQuickStyle>
 
 #include "headers/qdownloader.h"
 #include "headers/mangastream.h"

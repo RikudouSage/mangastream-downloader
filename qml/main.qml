@@ -3,12 +3,11 @@ import QtQuick.Controls 1.4
 import QtQuick.Window 2.0
 import QtQuick.Dialogs 1.2
 import QtQuick.LocalStorage 2.0
+import QtQuick.Controls.Styles 1.4
 
 import cz.chrastecky.img 1.0
 import cz.chrastecky.mangastream 1.0
 import cz.chrastecky.misc 1.0
-
-import "qrc:/qml/components"
 
 ApplicationWindow {
     readonly property string infoText: qsTr("Your manga was successfully saved to %1")
@@ -262,14 +261,18 @@ ApplicationWindow {
         }
     }
 
-    NewButton {
+    Button {
         id: downloadButton
         visible: false
-        paddingLeftRight: 30
         text: qsTr("Download")
         y: selectChapters.y + selectChapters.height + marginSize
-        font.pixelSize: 17
         anchors.horizontalCenter: parent.horizontalCenter
+        style: ButtonStyle {
+            label: Label {
+                font.pixelSize: 17
+                text: downloadButton.text
+            }
+        }
         onClicked: {
             progress(0, urls.length);
             startLoading();
@@ -284,14 +287,18 @@ ApplicationWindow {
         }
     }
 
-    NewButton {
+    Button {
         id: downloadAllButton
         visible: downloadButton.visible
-        paddingLeftRight: 30
         text: qsTr("Download all chapters")
         anchors.horizontalCenter: parent.horizontalCenter
         y: downloadButton.y + downloadButton.height + 10
-        font.pixelSize: 17
+        style: ButtonStyle {
+            label: Label {
+                font.pixelSize: 17
+                text: downloadAllButton.text
+            }
+        }
         onClicked: {
             startLoading();
             var len = lmodelChapters.count;
