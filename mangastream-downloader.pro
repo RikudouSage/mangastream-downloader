@@ -1,37 +1,37 @@
 system(lupdate mangastream-downloader.pro)
 system(lrelease mangastream-downloader.pro)
 
-TEMPLATE = app
-
-QT += qml quick widgets
-
+QT += quick
 CONFIG += c++11
-CONFIG += release
 
-SOURCES += sources/main.cpp \
-    sources/qdownloader.cpp \
-    sources/mangastream.cpp \
-    sources/misctools.cpp
+DEFINES += QT_DEPRECATED_WARNINGS
+
+SOURCES += main.cpp \
+    mangastream.cpp \
+    misctools.cpp \
+    imagedownloader.cpp
 
 RESOURCES += qml.qrc \
-    translations.qrc
+            translations.qrc
+
+lupdate_only {
+    SOURCES += *.qml
+}
 
 TRANSLATIONS += translations/cs_CZ.ts
-TRANSLATIONS += translations/sk_SK.ts
 
 RC_ICONS = appicon.ico
 
 QML_IMPORT_PATH =
 
-include(deployment.pri)
+QML_DESIGNER_IMPORT_PATH =
+
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    headers/qdownloader.h \
-    headers/mangastream.h \
-    headers/misctools.h
+    mangastream.h \
+    misctools.h \
+    imagedownloader.h
 
-lupdate_only {
-    SOURCES += qml/*.qml
-}
-
-DISTFILES +=

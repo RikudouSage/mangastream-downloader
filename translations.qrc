@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
         <file>translations/cs_CZ.qm</file>
-        <file>translations/sk_SK.qm</file>
     </qresource>
 </RCC>
