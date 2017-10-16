@@ -3,12 +3,6 @@
 
 bool DownloadImage::download(const QString url, QString manga, const QString chapter, const QString savePath, int totalCount) {
 
-    #if IS_DEBUG
-        if(totalCount > 0) {
-            qDebug() << "Image "+QString::number(i)+" of "+QString::number(totalCount);
-        }
-    #endif
-
     QString currentPath = savePath;
     manga = validateFilename(manga);
     if(manga.isEmpty()) {

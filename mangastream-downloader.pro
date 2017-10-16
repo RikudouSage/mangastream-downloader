@@ -1,8 +1,6 @@
 system(lupdate mangastream-downloader.pro)
 system(lrelease mangastream-downloader.pro)
 
-#DEFINES += DEBUG
-
 TEMPLATE = app
 
 QT += qml quick widgets
@@ -30,8 +28,7 @@ include(deployment.pri)
 HEADERS += \
     headers/qdownloader.h \
     headers/mangastream.h \
-    headers/misctools.h \
-    headers/isdebug.h
+    headers/misctools.h
 
 lupdate_only {
     SOURCES += qml/*.qml

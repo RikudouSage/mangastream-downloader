@@ -1,7 +1,6 @@
 #ifndef MISCTOOLS_H
 #define MISCTOOLS_H
 
-#include "isdebug.h"
 #include <QObject>
 #include <QDesktopServices>
 #include <QUrl>
@@ -17,7 +16,6 @@ public:
     QString getAppPath();
     QString getFilePrefix();
     Q_INVOKABLE bool isWindows();
-    Q_INVOKABLE bool isDebug();
 };
 
 #endif // MISCTOOLS_H

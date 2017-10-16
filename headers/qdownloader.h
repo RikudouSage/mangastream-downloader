@@ -1,7 +1,6 @@
 #ifndef QDOWNLOADER_H
 #define QDOWNLOADER_H
 
-#include "isdebug.h"
 #include <QObject>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>

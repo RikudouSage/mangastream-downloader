@@ -23,7 +23,3 @@ QString MiscTools::getFilePrefix() {
     }
     return QString("file://");
 }
-
-bool MiscTools::isDebug() {
-    return IS_DEBUG;
-}

@@ -1,7 +1,6 @@
 #ifndef MANGASTREAM_H
 #define MANGASTREAM_H
 
-#include "isdebug.h"
 #include <QObject>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>

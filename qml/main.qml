@@ -55,20 +55,6 @@ ApplicationWindow {
                 }
             }
         }
-
-        Menu {
-            title: "Debug"
-            visible: misctools.isDebug()
-            MenuItem {
-                text: "&Delete almost every manga"
-                onTriggered: {
-                    db.transaction(function(tx) {
-                        tx.executeSql("DELETE FROM mangalist WHERE manga != 'Boruto'");
-                        assignMangaList();
-                    });
-                }
-            }
-        }
     }
 
     FileDialog {
@@ -84,12 +70,6 @@ ApplicationWindow {
             db.transaction(function(tx) {
                 tx.executeSql("UPDATE path SET path='"+url+"'");
             });
-        }
-    }
-
-    function debug(what) {
-        if(misctools.isDebug()) {
-            console.log(what);
         }
     }
 
@@ -271,7 +251,6 @@ ApplicationWindow {
         y: chapterlabel.y + 5
         visible: false
         onCurrentIndexChanged: {
-            debug(currentIndex);
             if(typeof lmodelChapters.get(currentIndex).link != "undefined" && lmodelChapters.get(currentIndex).text != "undefined") {
                 startLoading();
                 chapter = lmodelChapters.get(currentIndex).text;
