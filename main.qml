@@ -39,6 +39,14 @@ ApplicationWindow {
         chooseChapterComboBox.currentIndexChanged();
     }
 
+    function hideChaptersInfo() {
+        chooseChapterLabel.visible = false;
+        chooseChapterComboBox.visible = false;
+        chooseChapterComboBox.currentIndex = 0;
+        chooseChapterComboBox.currentIndexChanged();
+        hideDownloadButtons();
+    }
+
     function showDownloadButtons() {
         downloadButton.visible = true;
     }
@@ -435,8 +443,12 @@ ApplicationWindow {
             anchors.topMargin: -10
             width: chooseMangaLabel.width
             onCurrentIndexChanged: {
-                if(typeof lmodelManga.get(currentIndex).value !== "undefined") {
-                    focus = false;
+                focus = false;
+                if(currentIndex < 0) {
+                    hideChaptersInfo();
+                } else if(currentIndex == 0) {
+                    hideChaptersInfo();
+                } else if(currentIndex < lmodelManga.count) {
                     startLoading();
                     lmodelChapters.clear();
                     mangaTitle = lmodelManga.get(currentIndex).text;
@@ -475,7 +487,7 @@ ApplicationWindow {
             anchors.top: chooseChapterLabel.top
             width: chooseMangaComboBox.width
             onCurrentIndexChanged: {
-                if(currentIndex > -1) {
+                if(currentIndex > -1 && currentIndex < lmodelChapters.count) {
                     focus = false;
                     startLoading();
                     chapter = lmodelChapters.get(currentIndex).text;
@@ -536,6 +548,7 @@ ApplicationWindow {
                 }
                 setImagesProgress(false);
                 setChaptersProgress(false);
+                clearProgressInfo();
                 stopLoading();
                 infoDialog.text = infoText.arg(appPath+"/"+mangaTitle);
                 infoDialog.directory = appPath+"/"+mangaTitle;
