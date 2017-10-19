@@ -74,7 +74,7 @@ void MiscTools::setLanguage(QString language) {
 
 void MiscTools::checkNewVersion()
 {
-#if defined(Q_OS_WINDOWS)
+#if defined(Q_OS_WIN)
     QNetworkAccessManager mgr;
     QNetworkRequest request(QUrl("http://www.chrastecky.cz/mangastream-downloader/version.txt"));
     QNetworkReply *reply = mgr.get(request);
