@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ" sourcelanguage="en">
+<TS version="2.0" language="cs_CZ" sourcelanguage="en">
 <context>
     <name>main</name>
     <message>
@@ -34,7 +34,7 @@
     </message>
     <message>
         <location filename="../main.qml" line="176"/>
-        <location filename="../main.qml" line="269"/>
+        <location filename="../main.qml" line="285"/>
         <source>Choose manga directory</source>
         <translation>Zvolte složku pro ukládání mangy</translation>
     </message>
@@ -75,59 +75,69 @@
         <translation>Jazky se nezdařilo změnit, protože se nedá zapisovat do souboru s nastaveními. Zkuste aplikaci spustit jako administrátor.</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="243"/>
+        <location filename="../main.qml" line="247"/>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="244"/>
+        <location filename="../main.qml" line="248"/>
         <source>Error: Manga name contains illegal characters and cannot be saved</source>
         <translation>Chyba: Název mangy obsahuje neplatné znaky a nelze ji uložit</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="252"/>
+        <location filename="../main.qml" line="256"/>
         <source>Download info</source>
         <translation>Info o stažení</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="331"/>
+        <location filename="../main.qml" line="269"/>
+        <source>New version available!</source>
+        <translation>Nová verze k dispozici!</translation>
+    </message>
+    <message>
+        <location filename="../main.qml" line="270"/>
+        <source>Download version %1 now?</source>
+        <translation>Stáhnout verzi %1 nyní?</translation>
+    </message>
+    <message>
+        <location filename="../main.qml" line="356"/>
         <source>Loading...</source>
         <translation>Načítání...</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="361"/>
+        <location filename="../main.qml" line="386"/>
         <source>Select language</source>
         <translation>Zvolte jazyk</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="382"/>
+        <location filename="../main.qml" line="407"/>
         <source>Back</source>
         <translation>Zpět</translation>
         <extra-Context>Back as in go back</extra-Context>
     </message>
     <message>
-        <location filename="../main.qml" line="390"/>
+        <location filename="../main.qml" line="415"/>
         <source>Save</source>
         <translation>Uložit</translation>
         <extra-Context>Save as in save language preference</extra-Context>
     </message>
     <message>
-        <location filename="../main.qml" line="433"/>
+        <location filename="../main.qml" line="458"/>
         <source>Choose manga to download:</source>
         <translation>Zvolte mangu ke stažení:</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="475"/>
+        <location filename="../main.qml" line="500"/>
         <source>Choose chapter:</source>
         <translation>Zvolte kapitolu:</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="507"/>
+        <location filename="../main.qml" line="532"/>
         <source>Download</source>
         <translation>Stáhnout</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="528"/>
+        <location filename="../main.qml" line="553"/>
         <source>Download all chapters</source>
         <translation>Stáhnout všechny kapitoly</translation>
     </message>

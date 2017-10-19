@@ -6,8 +6,12 @@
 #include <QFile>
 #include <QLocale>
 #include <QSettings>
-
-#include <QDebug>
+#include <QUrl>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QEventLoop>
+#include <QSslSocket>
 
 bool MiscTools::openDirectory(QString directory) {
     QDir directoryHandler(directory);
@@ -66,5 +70,21 @@ void MiscTools::setLanguage(QString language) {
     settings.beginGroup("Settings");
     settings.setValue("Language", language);
     emit languageChanged();
+}
+
+void MiscTools::checkNewVersion()
+{
+    QNetworkAccessManager mgr;
+    QNetworkRequest request(QUrl("http://www.chrastecky.cz/mangastream-downloader/version.txt"));
+    QNetworkReply *reply = mgr.get(request);
+    QEventLoop loop;
+    connect(&mgr, SIGNAL(finished(QNetworkReply*)), &loop, SLOT(quit()));
+    loop.exec();
+    QString answer = reply->readAll();
+    delete reply;
+    QVersionNumber remoteVersion = QVersionNumber::fromString(answer);
+    if(version < remoteVersion) {
+        emit newVersionAvailable(remoteVersion.toString());
+    }
 }
 

@@ -229,6 +229,10 @@ ApplicationWindow {
             languageChangeInfoDialog.icon = StandardIcon.Critical;
             languageChangeInfoDialog.open();
         }
+        onNewVersionAvailable: {
+            newVersionDialog.newVersion = newVersion;
+            newVersionDialog.open();
+        }
     }
 
     ImageDownloader {
@@ -256,6 +260,18 @@ ApplicationWindow {
             if(clickedButton === StandardButton.Open) {
                 misctools.openDirectory(directory);
             }
+        }
+    }
+
+    MessageDialog {
+        property string newVersion
+        id: newVersionDialog
+        title: qsTr("New version available!")
+        text: qsTr("Download version %1 now?").arg(newVersion)
+        icon: StandardIcon.Information
+        standardButtons: StandardButton.Yes | StandardButton.No
+        onYes: {
+            Qt.openUrlExternally("https://github.com/RikudouSage/mangastream-downloader");
         }
     }
 
@@ -292,6 +308,14 @@ ApplicationWindow {
         id: lmodelLanguages
     }
 
+    Timer {
+        id: newVersionTimer
+        interval: 2500
+        onTriggered: {
+            misctools.checkNewVersion();
+        }
+    }
+
     // start up related stuff
 
     Component.onCompleted: {
@@ -314,6 +338,7 @@ ApplicationWindow {
                 appPath = res.rows.item(0).path;
             }
             assignMangaList(false);
+            newVersionTimer.start();
         });
     }
 

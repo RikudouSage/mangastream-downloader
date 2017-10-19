@@ -1,7 +1,7 @@
 system(lupdate mangastream-downloader.pro)
 system(lrelease mangastream-downloader.pro)
 
-QT += quick
+QT += quick network
 CONFIG += c++11
 
 DEFINES += QT_DEPRECATED_WARNINGS

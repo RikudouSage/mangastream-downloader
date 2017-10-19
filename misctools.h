@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QString>
-#include <QGuiApplication>
+#include <QVersionNumber>
 
 class MiscTools : public QObject
 {
@@ -17,14 +17,17 @@ public:
     Q_INVOKABLE bool isWindows();
     Q_INVOKABLE QString getLanguage();
     Q_INVOKABLE void setLanguage(QString language);
+    Q_INVOKABLE void checkNewVersion();
 
 signals:
     void settingsFileNotWritable();
     void languageChanged();
+    void newVersionAvailable(QString newVersion);
 
 private:
     QString language = "";
     const QString settingsFile = "./appSettings.ini";
+    const QVersionNumber version = QVersionNumber(1, 2, 1);
 };
 
 #endif // MISCTOOLS_H
