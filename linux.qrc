@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/components">
+		<file alias="TaskbarProgress.qml">components/linux/TaskbarProgress.qml</file>
+	</qresource>
+</RCC>

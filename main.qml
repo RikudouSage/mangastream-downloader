@@ -9,6 +9,8 @@ import com.mangastream.downloader.img 1.0
 import com.mangastream.downloader.mangastream 1.0
 import com.mangastream.downloader.misctools 1.0
 
+import "qrc:/components"
+
 ApplicationWindow {
     // custom properties
     readonly property string infoText: qsTr("Your manga was succesfully saved to %1")
@@ -22,6 +24,19 @@ ApplicationWindow {
     property var urls
 
     // custom functions
+
+    function setTaskbarProgress(current, total) {
+        taskbarProgress.progressVisible = true;
+        taskbarProgress.maximum = total;
+        taskbarProgress.current = current;
+        if(current == total) {
+            hideTaskbarProgress();
+        }
+    }
+
+    function hideTaskbarProgress() {
+        taskbarProgress.progressVisible = false;
+    }
 
     function startLoading() {
         mainMenu.visible = false;
@@ -56,6 +71,7 @@ ApplicationWindow {
     }
 
     function clearProgressInfo(images, chapters) {
+        hideTaskbarProgress();
         if(images !== false) {
             imagesCountLabel.text = "";
         }
@@ -69,6 +85,7 @@ ApplicationWindow {
             clearProgressInfo(true, false);
             return;
         }
+        setTaskbarProgress(index, total);
         imagesCountLabel.text = imagesCountText.arg(index).arg(total);
     }
 
@@ -76,6 +93,7 @@ ApplicationWindow {
         if(index === false) {
             clearProgressInfo(false, true);
         }
+        setTaskbarProgress(index, total);
         chaptersCountLabel.text = chaptersCountText.arg(index).arg(total);
     }
 
@@ -147,7 +165,7 @@ ApplicationWindow {
 
     id: root
     visible: false
-    title: qsTr("MangaStream downloader")
+    title: qsTr("MangaStream Downloader")
     width: calculatedWidth()
     minimumWidth: width
     maximumWidth: width
@@ -211,6 +229,10 @@ ApplicationWindow {
 
     MangaStream {
         id: mangastream
+    }
+
+    TaskbarProgress {
+        id: taskbarProgress
     }
 
     MiscTools {

@@ -14,6 +14,9 @@ SOURCES += main.cpp \
 RESOURCES += qml.qrc \
             translations.qrc
 
+win32:RESOURCES += windows.qrc
+linux:RESOURCES += linux.qrc
+
 lupdate_only {
     SOURCES += *.qml
 }
