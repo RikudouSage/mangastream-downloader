@@ -1,14 +1,7 @@
 #include "mangastream.h"
 
-#include <QUrl>
-#include <QNetworkRequest>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
-#include <QEventLoop>
-#include <QRegularExpression>
-
 QString MangaStream::getContentOfUrl(QString url) {
-    QUrl dUrl(url);
+    QUrl dUrl(httpHost + url);
     QNetworkRequest request(dUrl);
     QNetworkAccessManager mgr;
     QNetworkReply *reply = mgr.get(request);
@@ -25,7 +18,7 @@ QString MangaStream::getContentOfUrl(QString url) {
 QStringList MangaStream::getListOfManga() {
     QStringList ret;
 
-    QString answer = getContentOfUrl("http://mangastream.com/manga");
+    QString answer = getContentOfUrl("/manga");
 
     int startPos = answer.indexOf("<table class=\"table table-striped\">");
     int endPos = answer.indexOf("</table>", startPos);
@@ -93,7 +86,7 @@ QStringList MangaStream::getListOfChapters(QString url) {
 
 QStringList MangaStream::getImages(QString url) {
     QStringList ret;
-    QString chapter = url.split("/").at(5);
+    QString chapter = url.split("/").at(4);
 
     QString currentChapter = chapter;
     QString currentUrl = url;
@@ -107,17 +100,17 @@ QStringList MangaStream::getImages(QString url) {
 
         QString line = answer.mid(startPos, length);
 
-        QRegularExpression regexp("<a href=\"(.+)\"><img id=\"manga-page\" src=\"(.+)\" /></a>");
+        QRegularExpression regexp("<a href=\"(.+)\"><img id=\"manga-page\" +src=\"(.+)\" /></a>");
 
         QRegularExpressionMatch matches = regexp.match(line);
 
         if(matches.captured(2).length() > 0) {
-            ret << "http:"+matches.captured(2);
+            ret << "https:"+matches.captured(2);
         }
 
         currentUrl = matches.captured(1);
-        if(currentUrl.split("/").length() > 5) {
-            currentChapter = currentUrl.split("/").at(5);
+        if(currentUrl.split("/").length() > 4) {
+            currentChapter = currentUrl.split("/").at(4);
         } else {
             currentChapter = "";
         }

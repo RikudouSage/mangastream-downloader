@@ -1,13 +1,4 @@
 #include "imagedownloader.h"
-#include "misctools.h"
-#include <QDir>
-#include <QUrl>
-#include <QNetworkRequest>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
-#include <QEventLoop>
-#include <QByteArray>
-#include <QStringList>
 
 bool ImageDownloader::download(const QString url, QString manga, const QString chapter, QString savePath) {
     manga = validateFilename(manga);

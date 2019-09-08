@@ -3,6 +3,16 @@
 
 #include <QObject>
 #include <QString>
+#include <QDir>
+#include <QUrl>
+#include <QNetworkRequest>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QEventLoop>
+#include <QByteArray>
+#include <QStringList>
+
+#include "misctools.h"
 
 class ImageDownloader : public QObject
 {

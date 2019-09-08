@@ -1,18 +1,5 @@
 #include "misctools.h"
 
-#include <QDir>
-#include <QDesktopServices>
-#include <QUrl>
-#include <QFile>
-#include <QLocale>
-#include <QSettings>
-#include <QUrl>
-#include <QNetworkAccessManager>
-#include <QNetworkRequest>
-#include <QNetworkReply>
-#include <QEventLoop>
-#include <QSslSocket>
-
 bool MiscTools::openDirectory(QString directory) {
     QDir directoryHandler(directory);
     directory = getFilePrefix()+directory;

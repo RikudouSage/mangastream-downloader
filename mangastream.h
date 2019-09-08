@@ -4,6 +4,12 @@
 #include <QObject>
 #include <QString>
 #include <QStringList>
+#include <QUrl>
+#include <QNetworkRequest>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QEventLoop>
+#include <QRegularExpression>
 
 class MangaStream : public QObject
 {
@@ -15,6 +21,7 @@ public:
 
 private:
     QString getContentOfUrl(QString url);
+    const QString httpHost = "https://readms.net";
 };
 
 #endif // MANGASTREAM_H

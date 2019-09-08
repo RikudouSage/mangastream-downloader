@@ -4,6 +4,18 @@
 #include <QObject>
 #include <QString>
 #include <QVersionNumber>
+#include <QDir>
+#include <QDesktopServices>
+#include <QUrl>
+#include <QFile>
+#include <QLocale>
+#include <QSettings>
+#include <QUrl>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QEventLoop>
+#include <QSslSocket>
 
 class MiscTools : public QObject
 {

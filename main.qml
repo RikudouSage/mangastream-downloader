@@ -27,8 +27,8 @@ ApplicationWindow {
 
     function setTaskbarProgress(current, total) {
         taskbarProgress.progressVisible = true;
-        taskbarProgress.maximum = total;
-        taskbarProgress.current = current;
+        taskbarProgress.maximum = total || false;
+        taskbarProgress.current = current || false;
         if(current == total) {
             hideTaskbarProgress();
         }
