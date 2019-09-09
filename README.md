@@ -6,7 +6,7 @@ Usage is pretty simple, just open the app, choose manga title and chapter and th
 
 After downloading the manga will be in new directory "manga" created in the app base directory. The app will also display the full path to the manga directory.
 
-Download for [Windows](https://github.com/RikudouSage/mangastream-downloader/releases/download/v1.3.0/MangaStreamDownloader.exe) or [Ubuntu/Linux Mint](https://github.com/RikudouSage/mangastream-downloader/releases/latest)
+Download for [Windows](https://github.com/RikudouSage/mangastream-downloader/releases/download/v1.3.0/MangaStreamDownloader.exe) or [Ubuntu/Linux Mint](https://github.com/RikudouSage/mangastream-downloader/releases/latest).
 
 ---
 
