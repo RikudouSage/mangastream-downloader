@@ -6,6 +6,10 @@ CONFIG += c++11
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
+exists(mangastream-downloader.local.pro) {
+    include(mangastream-downloader.local.pro)
+}
+
 SOURCES += main.cpp \
     mangastream.cpp \
     misctools.cpp \

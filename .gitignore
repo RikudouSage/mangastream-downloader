@@ -45,3 +45,4 @@ CMakeLists.txt.user
 *.Release
 /release
 /debug
+/*.local.pro

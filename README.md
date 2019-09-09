@@ -6,52 +6,39 @@ Usage is pretty simple, just open the app, choose manga title and chapter and th
 
 After downloading the manga will be in new directory "manga" created in the app base directory. The app will also display the full path to the manga directory.
 
-Windows users can download compiled version [here](https://github.com/RikudouSage/mangastream-downloader/releases).
-
-Ubuntu 17.04 (zesty) users can add repository to install via apt:
-
-Add the repository:
-
-`sudo sh -c "echo 'deb https://rikudousage.github.io/repo zesty main' > /etc/apt/sources.list.d/rikudousage-zesty.list"`
-
-Add signing key:
-
-`wget -O - https://rikudousage.github.io/public.gpg.key | sudo apt-key add -`
-
-Update repositories:
-
-`sudo apt update`
-
-And install:
-
-`sudo apt install mangastream-downloader`
-
-Alternatively you can download deb package [here](https://github.com/RikudouSage/mangastream-downloader/releases).
+Windows and Ubuntu/Linux Mint users can download compiled version [here](https://github.com/RikudouSage/mangastream-downloader/releases).
 
 ---
 
 ### Compiling on Ubuntu/Debian/Mint
 
+#### With system libraries
+
 1) First install all dependencies:
-
-	apt-get update && apt-get install git build-essential qtbase5-dev qtdeclarative5-dev qt5-default qttools5-dev-tools
-
+    - `apt-get update`
+    - `apt-get install git build-essential qtbase5-dev qtdeclarative5-dev qt5-default qttools5-dev-tools libssl-dev`
+    - > You might need to prepend the commands with sudo if you're not logged in as root 
+    - > If you are on Ubuntu 18.04, install libssl1.0-dev instead of libssl-dev
 2) Clone project
-
-	git clone https://github.com/RikudouSage/mangastream-downloader
-   
+    - git clone https://github.com/RikudouSage/mangastream-downloader
 3) Get into the directory
-
-	cd mangastream-downloader
-    
+    - cd mangastream-downloader
 4) Compile it
-
-	qmake && make
-    
+    - qmake && make
 5) Run it!
+    -./mangastream-downloader
 
-	./mangastream-downloader
+#### With docker
 
+1. Configure for docker:
+    - `./configure-docker`
+2. Compile:
+    - Systems with libssl 1.0:
+        - `docker run --rm -it -v $(pwd):/app rikudousage/qt-static:5.9 -c "cd /app && qmake mangastream-downloader.pro && make"`
+    - Systems with libssl 1.1:
+        - `docker run --rm -it -v $(pwd):/app rikudousage/qt-static:5.13 -c "cd /app && qmake mangastream-downloader.pro && make"`
+3. Run:
+    - ./mangastream-downloader
 
 ### Warranty
 

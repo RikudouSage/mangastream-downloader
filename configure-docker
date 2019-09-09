@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "QTPLUGIN += qsqlite" > mangastream-downloader.local.pro
+
