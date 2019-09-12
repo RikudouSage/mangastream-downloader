@@ -22,8 +22,8 @@ deploy:
     api_key: $MANGASTREAM_DOWNLOADER_KEY
     skip_cleanup: true
     name: Version $VERSION
-    file:
-        - built/*
+    file_glob: true
+    file: built/*
     on:
         tags: true
 branches:
