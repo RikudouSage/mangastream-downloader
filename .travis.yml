@@ -1,0 +1,30 @@
+language: cpp
+dist: bionic
+compiler: gcc
+services:
+    - docker
+script:
+    - mkdir built
+    - docker run --rm -it -v $(pwd):/app  rikudousage/qt-static:windows -c 'cd /app && qmake && make'
+    - mv release/mangastream-downloader.exe built/MangaStreamDownloader.SingleFile.$TRAVIS_TAG.exe
+    - docker run --rm -it -v $(pwd):/app  rikudousage/qt-static:windows -c 'cd /app && make distclean'
+    - ./configure-docker
+    - docker run --rm -it -v $(pwd):/app  rikudousage/qt-static:5.13 -c 'cd /app && qmake mangastream-downloader.pro && make'
+    - mv mangastream-downloader built/mangastream-downloader_${TRAVIS_TAG}_18.04_bionic
+    - docker run --rm -it -v $(pwd):/app  rikudousage/qt-static:5.13 -c 'cd /app && make distclean'
+    - docker run --rm -it -v $(pwd):/app  rikudousage/qt-static:5.9 -c 'cd /app && qmake mangastream-downloader.pro && make' 
+    - mv mangastream-downloader built/mangastream-downloader_${TRAVIS_TAG}_16.04_xenial
+    - docker run --rm -it -v $(pwd):/app  rikudousage/qt-static:5.9 -c 'cd /app && make distclean'
+deploy:
+    provider: releases
+    api_key: $MANGASTREAM_DOWNLOADER_KEY
+    skip_cleanup: true
+    file:
+        - built/*
+    on:
+        tags: true
+branches:
+    only:
+        - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+
+
