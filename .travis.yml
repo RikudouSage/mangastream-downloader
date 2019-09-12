@@ -1,11 +1,13 @@
 language: cpp
 dist: bionic
 compiler: gcc
+env:
+    - VERSION=${TRAVIS_TAG/v/}
 services:
     - docker
 script:
     - mkdir built
-    - docker run --rm -it -v $(pwd):/app  rikudousage/qt-static:windows -c 'cd /app && qmake && make && chmod 0777 release/mangastream-downloader.exe'
+    - docker run --rm -it -e "CURRENT_UID=$UID" -v $(pwd):/app  rikudousage/qt-static:windows -c 'cd /app && qmake && make && chown -R $CURRENT_UID release'
     - mv release/mangastream-downloader.exe built/MangaStreamDownloader.SingleFile.$TRAVIS_TAG.exe
     - docker run --rm -it -v $(pwd):/app  rikudousage/qt-static:windows -c 'cd /app && make distclean'
     - ./configure-docker
@@ -19,6 +21,7 @@ deploy:
     provider: releases
     api_key: $MANGASTREAM_DOWNLOADER_KEY
     skip_cleanup: true
+    name: Version $VERSION
     file:
         - built/*
     on:
