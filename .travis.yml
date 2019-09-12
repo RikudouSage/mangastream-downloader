@@ -5,7 +5,7 @@ services:
     - docker
 script:
     - mkdir built
-    - docker run --rm -it -v $(pwd):/app  rikudousage/qt-static:windows -c 'cd /app && qmake && make'
+    - docker run --rm -it -v $(pwd):/app  rikudousage/qt-static:windows -c 'cd /app && qmake && make && chmod 0777 release/mangastream-downloader.exe'
     - mv release/mangastream-downloader.exe built/MangaStreamDownloader.SingleFile.$TRAVIS_TAG.exe
     - docker run --rm -it -v $(pwd):/app  rikudousage/qt-static:windows -c 'cd /app && make distclean'
     - ./configure-docker
