@@ -8,8 +8,11 @@ services:
 script:
     - mkdir built
     - docker run --rm -it -e "CURRENT_UID=$UID" -v $(pwd):/app  rikudousage/qt-static:windows -c 'cd /app && qmake && make && chown -R $CURRENT_UID release'
-    - mv release/mangastream-downloader.exe built/MangaStreamDownloader.SingleFile.$TRAVIS_TAG.exe
+    - mv release/mangastream-downloader.exe built/MangaStreamDownloader.Portable.$TRAVIS_TAG.exe
     - docker run --rm -it -v $(pwd):/app  rikudousage/qt-static:windows -c 'cd /app && make distclean'
+    - sed -i "s/{{{VERSION}}}/$VERSION/g" installer.iss
+    - sed -i "s/{{{TAGNAME}}}/$TRAVIS_TAG/g" installer.iss
+    - docker run --rm -it -v $(pwd):/app rikudousage/inno-setup bash -c 'cd /app && iscc installer.iss'
     - ./configure-docker
     - docker run --rm -it -v $(pwd):/app  rikudousage/qt-static:5.13 -c 'cd /app && qmake mangastream-downloader.pro && make'
     - mv mangastream-downloader built/mangastream-downloader_${TRAVIS_TAG}_18.04_bionic
