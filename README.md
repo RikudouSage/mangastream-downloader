@@ -1,5 +1,7 @@
 # MangaStream Downloader
 
+# Attention! This repository and application is no longer maintained
+
 This is a simple app written in Qt, it allows you to download manga from MangaStream.
 
 Usage is pretty simple, just open the app, choose manga title and chapter and then press "Download".
